@@ -5,7 +5,7 @@ function FindGateHUD(GatesToLookFor)
         local gateHUD = Gate:FindFirstChild("GateHUD")
         if gateHUD then
             local title = gateHUD:FindFirstChild("Title")
-            if title and title.Text:match(GatesToLookFor) then -- Use `match` to search for the area in Title
+            if title and title.Text:match(GatesToLookFor) then 
                 return true
             end
         end
@@ -46,12 +46,32 @@ if gateToUnlock then
             if gateHUD then
                 local title = gateHUD:FindFirstChild("Title")
                 if title and title.Text:match("Area 3") then 
-                    
+                    game:GetService("ReplicatedStorage").Network.InstanceZones_RequestPurchase:InvokeServer("AutumnEvent",3)
                     local currentQuest = gateHUD:FindFirstChild("Quest") and gateHUD.Quest:FindFirstChild("Title") and gateHUD.Quest.Title.Text
                     if currentQuest and currentQuest:match('golden') and currentQuest:match('Make') then
                         processPets(101, "GoldMachine", "GoldMachine_Activate", 10)
                     elseif currentQuest and currentQuest:match('Break') and currentQuest:match('breakables') or currentQuest:match('breakable') then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(947.247498, 16.2126942, -22448.3652, -0.420525283, -6.65844879e-10, -0.907280803, -1.90858732e-10, 1, -6.45427489e-10, 0.907280803, -9.82561185e-11, -0.420525283)
+                    end
+                end
+            end
+        end
+    elseif gateToUnlock == "Area 4" then
+        local gates = workspace.__THINGS.__INSTANCE_CONTAINER.Active.AutumnEvent.Gates:GetChildren()
+        
+        for _, Gate in ipairs(gates) do
+            local gateHUD = Gate:FindFirstChild("GateHUD")
+            if gateHUD then
+                local title = gateHUD:FindFirstChild("Title")
+                if title and title.Text:match("Area 4") then 
+                    game:GetService("ReplicatedStorage").Network.InstanceZones_RequestPurchase:InvokeServer("AutumnEvent",4)
+                    local currentQuest = gateHUD:FindFirstChild("Quest") and gateHUD.Quest:FindFirstChild("Title") and gateHUD.Quest.Title.Text
+                    if currentQuest and currentQuest:match('golden') and currentQuest:match('Make') then
+                        processPets(101, "GoldMachine", "GoldMachine_Activate", 10)
+                    elseif currentQuest and currentQuest:match('Break') and currentQuest:match('breakables') or currentQuest:match('breakable') then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1100.43103, 16.2106895, -22451.1797, 0.787207127, -1.05845537e-07, -0.616688728, 1.05486507e-07, 1, -3.69810671e-08, 0.616688728, -3.59405803e-08, 0.787207127)
+                    elseif currentQuest and currentQuest:match('rainbow') and currentQuest:match('Make') then
+                        processPets(51, "RainbowMachine", "RainbowMachine_Activate", 5)
                     end
                 end
             end
