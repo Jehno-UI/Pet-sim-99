@@ -41,7 +41,7 @@ function FindGateHUD(GatesToLookFor)
  
  local gateToUnlock = FindGateToUnlock()
  if gateToUnlock then
-    if gateToUnlock == "3" then
+    if gateToUnlock == "Area 3" then
         local gates = workspace.__THINGS.__INSTANCE_CONTAINER.Active.AutumnEvent.Gates:GetChildren()
  
         for _, Gate in ipairs(gates) do 
@@ -53,7 +53,6 @@ function FindGateHUD(GatesToLookFor)
 
                  if Currentquest:match('golden') and Currentquest:match('Make') then 
                     print("Found Gold Quest")
-
                     processPets(201, "GoldMachine", "GoldMachine_Activate", 20)
                 end
               end
