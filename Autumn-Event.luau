@@ -15,6 +15,18 @@ function FindGateToUnlock()
     return nil
 end
 
+local function processPets(petCondition, machineName, serverFunction, amount)
+    local save = require(game.ReplicatedStorage.Library.Client.Save).Get()
+    if save and save.Inventory and save.Inventory.Pet then
+        for key, pet in pairs(save.Inventory.Pet) do
+            if pet._am and pet._am > petCondition then
+                local args = { tostring(key), amount }
+                game:GetService("ReplicatedStorage").Network[serverFunction]:InvokeServer(unpack(args))
+            end
+        end
+    end
+end
+
 local gateToUnlock = FindGateToUnlock()
 if gateToUnlock then
     local gates = workspace.__THINGS.__INSTANCE_CONTAINER.Active.AutumnEvent.Gates:GetChildren()
