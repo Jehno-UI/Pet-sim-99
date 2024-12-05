@@ -52,6 +52,8 @@ function FindGateHUD(GatesToLookFor)
                  local Currentquest = gate.GateHUD.Quest.Title.Text
 
                  if Currentquest:match('golden') and Currentquest:match('Make') then 
+                    print("Found Gold Quest")
+
                     processPets(201, "GoldMachine", "GoldMachine_Activate", 20)
                 end
               end
