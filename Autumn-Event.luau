@@ -30,7 +30,7 @@ function FindGateHUD(GatesToLookFor)
        local area = "Area " .. tostring(number)
        print("Checking " .. area)
        if not FindGateHUD(area) then
-          local nextArea = tostring(number + 1)
+          local nextArea = "Area " .. tostring(number + 1)
           print("Gate to unlock: " .. nextArea)
           return nextArea
        end
