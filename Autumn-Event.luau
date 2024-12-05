@@ -40,25 +40,24 @@ local gateToUnlock = FindGateToUnlock()
 if gateToUnlock then
     if gateToUnlock == "Area 3" then
         local gates = workspace.__THINGS.__INSTANCE_CONTAINER.Active.AutumnEvent.Gates:GetChildren()
-        print("Area 3 Quest Process")
         
         for _, Gate in ipairs(gates) do
             local gateHUD = Gate:FindFirstChild("GateHUD")
             if gateHUD then
                 local title = gateHUD:FindFirstChild("Title")
-                if title and title.Text:match("Area 3") then -- Match "Area 3" in the title
-                    print("Found Area 3")
+                if title and title.Text:match("Area 3") then 
                     
                     local currentQuest = gateHUD:FindFirstChild("Quest") and gateHUD.Quest:FindFirstChild("Title") and gateHUD.Quest.Title.Text
                     if currentQuest and currentQuest:match('golden') and currentQuest:match('Make') then
-                        print("Found Gold Quest")
-                        processPets(201, "GoldMachine", "GoldMachine_Activate", 20)
+                        processPets(101, "GoldMachine", "GoldMachine_Activate", 10)
+                    elseif currentQuest and currentQuest:match('Break') and currentQuest:match('breakables') or currentQuest:match('breakable') then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(947.247498, 16.2126942, -22448.3652, -0.420525283, -6.65844879e-10, -0.907280803, -1.90858732e-10, 1, -6.45427489e-10, 0.907280803, -9.82561185e-11, -0.420525283)
                     end
                 end
             end
         end
     end
-    print("Next gate to unlock is: " .. gateToUnlock)
+
 else
-    print("No gate found to unlock!")
+
 end
