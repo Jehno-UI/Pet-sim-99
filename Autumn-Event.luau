@@ -5,7 +5,7 @@ function FindGateHUD(GatesToLookFor)
         local gateHUD = Gate:FindFirstChild("GateHUD")
         if gateHUD then
             local title = gateHUD:FindFirstChild("Title")
-            if title and title.Text:match(GatesToLookFor) then 
+            if title and title.Text:match(GatesToLookFor) and Gate.Transparency == 1 then -- Use `match` to search for the area in Title
                 return true
             end
         end
