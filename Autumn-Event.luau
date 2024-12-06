@@ -30,7 +30,6 @@ local function FindGateToUnlock()
             end
         end
     end
-    return nil, nil
 end
 
 local gateToUnlock, gateNumber = FindGateToUnlock()
