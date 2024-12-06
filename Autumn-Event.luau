@@ -14,19 +14,16 @@ end
 local function FindGateToUnlock()
     local gates = workspace.__THINGS.__INSTANCE_CONTAINER.Active.AutumnEvent.Gates:GetChildren()
 
-    for number = 8, 2, -1 do
-        local area = "Area " .. tostring(number)
-        local nextArea = "Area " .. tostring(number + 1)
+    for number = 2, 8 do
+        local area = "Area " .. tostring(number - 1)
+        local currentArea = "Area " .. tostring(number)
 
         for _, Gate in ipairs(gates) do
-            if Gate:FindFirstChild("GateHUD") then
+            if Gate:FindFirstChild("GateHUD") and Gate.Transparency == 0 then
                 local title = Gate.GateHUD:FindFirstChild("Title")
-                if title and title.Text == area and Gate.Transparency == 1 then
-                    if number == 2 then
-                        return area, number
-                    else
-                        return nextArea, number
-                    end
+                if title and title.Text == currentArea then
+                    return area, number
+                    print(area, number)
                 end
             end
         end
@@ -34,6 +31,9 @@ local function FindGateToUnlock()
 
     return nil, nil
 end
+
+
+
 local gateToUnlock, gateNumber = FindGateToUnlock()
 
 if gateToUnlock then
@@ -76,7 +76,5 @@ if gateToUnlock then
     end
 else
     print(gateToUnlock, gateNumber, "A")
-
     print("No gates to unlock.")
 end
-
