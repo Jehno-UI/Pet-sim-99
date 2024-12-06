@@ -73,7 +73,7 @@ if gateToUnlock then
         end
     end
 else
-    print(gateToUnlock, gateNumber)
+    print(gateToUnlock, gateNumber, "A")
 
     print("No gates to unlock.")
 end
