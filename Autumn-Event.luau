@@ -1,4 +1,3 @@
-
 local function processPets(petCondition, machineName, serverFunction, amount)
     local save = require(game.ReplicatedStorage.Library.Client.Save).Get()
     if save and save.Inventory and save.Inventory.Pet then
@@ -35,6 +34,8 @@ end
 
 
 local gateToUnlock, gateNumber = FindGateToUnlock()
+print("Gate to Unlock:", gateToUnlock, "Gate Number:", gateNumber)
+
 
 if gateToUnlock then
     local gates = workspace.__THINGS.__INSTANCE_CONTAINER.Active.AutumnEvent.Gates:GetChildren()
@@ -78,3 +79,4 @@ else
     print(gateToUnlock, gateNumber, "A")
     print("No gates to unlock.")
 end
+
