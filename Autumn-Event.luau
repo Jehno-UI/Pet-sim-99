@@ -19,19 +19,21 @@ local function FindGateToUnlock()
         local nextArea = "Area " .. tostring(number + 1)
 
         for _, Gate in ipairs(gates) do
-            local title = Gate:FindFirstChild("GateHUD") and Gate.GateHUD:FindFirstChild("Title")
-            if title and title.Text == area and Gate.Transparency == 1 then
-                -- Handle Gate 2 specifically to avoid adding +1
-                if number == 2 then
-                    return area, number
-                else
-                    return nextArea, number
+            if Gate:FindFirstChild("GateHUD") then
+                local title = Gate.GateHUD:FindFirstChild("Title")
+                if title and title.Text == area and Gate.Transparency == 1 then
+                    if number == 2 then
+                        return area, number
+                    else
+                        return nextArea, number
+                    end
                 end
             end
         end
     end
-end
 
+    return nil, nil
+end
 local gateToUnlock, gateNumber = FindGateToUnlock()
 
 if gateToUnlock then
